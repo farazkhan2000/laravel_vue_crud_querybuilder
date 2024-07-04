@@ -4,10 +4,10 @@
       <h1 class="mt-5 text-center text-info fw-bold">CRUD - QueryBuilder</h1>
       <div class="row">
         <div class="col-lg-6">
-          <StudentsForm />
+          <StudentsForm @studentAdded="handleStudentAdded" />
         </div>
         <div class="col-lg-6">
-          <StudentsTable />
+          <StudentsTable :students="students" />
         </div>
       </div>
     </div>
@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import StudentsForm from '../components/students/StudentsForm.vue';
 import StudentsTable from '../components/students/StudentsTable.vue';
 
@@ -25,7 +26,29 @@ export default {
     StudentsTable
   },
   data() {
-    
+    return {
+      students: [],
+    };
   },
+  methods: {
+    async getStudents() {
+      try {
+        const response = await axios.get('/get-students');
+        this.students = response.data;
+      } catch (error) {
+        console.error('Error fetching students:', error);
+      }
+    },
+    handleStudentAdded(newStudent) {
+      this.students.push(newStudent);
+    }
+  },
+  mounted() {
+    this.getStudents();
+  }
 }
 </script>
+
+<style scoped>
+/* Add any relevant styles here */
+</style>
