@@ -33,6 +33,20 @@ class StudentController extends Controller
         }
     }
 
+    public function updateStudent(Request $request, $id) {
+        $student = DB::table('students')->where('id', $id)->update([
+            'name' => $request->name,
+            'age' => $request->age,
+            'profession' => $request->profession,
+        ]);
+    
+        if ($student) {
+            return response()->json(['message' => 'Student updated successfully'], 200);
+        } else {
+            return response()->json(['message' => 'Failed to update student'], 500);
+        }
+    }
+
     public function deleteStudent($id) {
         try {
             $student = DB::table('students')->where('id', $id)->delete();
