@@ -51,32 +51,32 @@
     </div>
 
     <!-- Edit Student Modal -->
-    <div class="modal" id="edit_student_modal" tabindex="-1" role="dialog" aria-labelledby="editStudentLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content bg-dark rounded-0">
+    <div class="modal" id="edit_student_modal" tabindex="-1" aria-labelledby="editStudentLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content bg-dark rounded-0 p-3">
           <div class="modal-header border-0">
             <h5 class="modal-title" id="editStudentLabel">Edit Student</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form @submit.prevent="updateStudent" class="mt-5 rounded p-5 w-75" :style="{ backgroundColor: '#040406' }">
+            <form @submit.prevent="updateStudent" class="rounded-0">
               <div class="mb-3">
                 <label for="name" class="form-label">Name: </label>
-                <input type="text" class="form-control bg-dark text-light border-0 rounded-0" id="name" name="name" v-model="selectedStudent.name">
+                <input type="text" class="form-control bg-dark text-light border-1 rounded-0" id="name" name="name" v-model="selectedStudent.name">
               </div>
               <div class="mb-3">
                 <label for="age" class="form-label">Age: </label>
-                <input type="number" class="form-control bg-dark text-light border-0 rounded-0" id="age" name="age" v-model="selectedStudent.age">
+                <input type="number" class="form-control bg-dark text-light border-1 rounded-0" id="age" name="age" v-model="selectedStudent.age">
               </div>
               <div class="mb-3">
                 <label for="profession" class="form-label">Profession: </label>
-                <input type="text" class="form-control bg-dark text-light border-0 rounded-0" id="profession" name="profession" v-model="selectedStudent.profession">
+                <input type="text" class="form-control bg-dark text-light border-1 rounded-0" id="profession" name="profession" v-model="selectedStudent.profession">
               </div>
-              <button type="submit" class="btn btn-dark rounded-0 px-3 mt-3">Update Student</button>
+              <button type="submit" class="btn btn-outline-info rounded-0 px-3 mt-3">Update Student</button>
             </form>
           </div>
           <div class="modal-footer border-0">
-            <button type="button" class="btn btn-light rounded-0" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-danger rounded-0" data-bs-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
